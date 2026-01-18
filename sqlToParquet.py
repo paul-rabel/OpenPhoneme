@@ -36,10 +36,15 @@ try:
     
     # 3. Peek at the data
     print("\nHere is a preview of the data:")
-    print(df.head()) # Shows the first 5 rows
+    print(df.head(10))
 
 except Exception as e:
     print(f"An error occurred: {e}")
+
+
+# get parquet file
+df.to_parquet('street_names.parquet')
+
 
 
 
