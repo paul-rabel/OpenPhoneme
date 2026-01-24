@@ -19,7 +19,7 @@ print(HOST)
 print(PORT)
 print(DB)
 
-table_name = 'planet_osm_line'
+table_name = 'streets_and_states'
 
 # 1. Create the connection engine
 conn_str = f"postgresql://{USER}:{PASS}@{HOST}:{PORT}/{DB}"
@@ -29,7 +29,7 @@ print("Connecting to the database...")
 
 # 2. Use Pandas to read the table
 try:
-    query = f"SELECT osm_id, name FROM {table_name} WHERE name IS NOT NULL LIMIT 100"
+    query = f"SELECT street_osm_id, state_name, street_name FROM {table_name} WHERE street_osm_id > 0"
     df = pd.read_sql(query, engine)
 
     print(f"Success! Pulled {len(df)} rows from {table_name}.")
